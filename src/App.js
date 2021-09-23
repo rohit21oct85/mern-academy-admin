@@ -38,7 +38,7 @@ function App() {
                         <Route exact={true} key={route.path} path={route.path} component={route.component} />
                     )))}
                     {privateRoutes?.map((route => (
-                            <PrivateRoute exact={true} key={route.path} path={route.path} component={route.component} />
+                      <PrivateRoute exact={true} key={route.path} path={route.path} component={route.component} title={route.title}/>
                     )))}
                   </Switch>
                 </React.StrictMode>

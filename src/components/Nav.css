@@ -3,10 +3,6 @@
 *{
     font-family: 'Open Sans', sans-serif;
 }
-p{
-    font-size:16px;
-    font-family: 'Open Sans', sans-serif;
-}
 
 /* width */
 ::-webkit-scrollbar {
@@ -32,21 +28,23 @@ p{
 /* loged in css */
 
 .login_menu{
-    background-color: #3b405a;
+    background-color: #041361;
     height: 100vh;
     overflow: hidden;
     padding: 0px;
+
 }
 
 .webLogo {
     background-color: #fff;
     text-align: center;
-    padding: 11px;
+    padding: 11px 10px;
 }
 .user_area {
+    background: #041361;
     text-align: center;
     color: #fff;
-    padding: 0px !important;
+    padding: 15px;
 }
 .user_icon {
     height: 70px;
@@ -62,7 +60,7 @@ p{
     text-decoration: none;
     list-style-type: none;
     display: flex;
-    padding: 10px 10px 10px 10px;
+    padding:10px 0px;
     justify-content: space-between;
     margin-bottom: 0px !important;
 }
@@ -77,6 +75,7 @@ p{
     color: #fff;
     height: 60vh;
     overflow-y: auto;
+    background: #041361;
 }
 .navbar_menus ul {
     list-style-type: none;
@@ -86,8 +85,8 @@ p{
 .navbar_menus ul li {
     margin-bottom: 5px;
     letter-spacing: 1px;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
     width: 100%;
     border-radius:0px;
     cursor: pointer;

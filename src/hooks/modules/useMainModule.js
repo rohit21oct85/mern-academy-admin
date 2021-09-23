@@ -11,7 +11,7 @@ export default function useMainModule(role,email) {
     
     return useQuery(`role-modules-${role}-${email}`, async () => {
             if(role && email){
-                const result = await axios.get(`${API_URL}role-module/view/${role}/${email}`,{
+                const result = await axios.get(`${API_URL}/role-module/view/${role}/${email}`,{
                     headers: {
                         'Content-Type': 'Application/json',
                         'Authorization':'Bearer '+state.access_token

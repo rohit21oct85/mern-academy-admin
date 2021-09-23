@@ -9,11 +9,16 @@
 }
 .main-area-all {
     background-color: #fff;
-    overflow-y: auto;
+    overflow: hidden auto;
 }
 .dashboard_main-container {
     padding: 0px 10px 20px 10px;
-    background-color: #f6f6f6;
+    background-color: #fdfdfd;
+    height: fit-content;
+}
+.dashboard_main-container-inner {
+    padding: 0px 10px 20px 10px;
+    background-color: #fdfdfd;
 }
 .dash-main-head {
     margin-bottom: 10px;
@@ -47,9 +52,10 @@ h2{
 }
 .dash-cont-start{
     background-color: #fff;
-    padding: 10px 15px 50px 10px;
-    height: 79vh;
+    padding: 0px;
+    height: 70vh;
     margin-bottom: 1em;
+    overflow-x: hidden;
 }
 .dash-con-heading{
     background-color: #fff;
@@ -364,12 +370,12 @@ label.form-lable.form-input{
     border-radius: 0px !important;
 }
 .dark{
-    background: #fa7649;
+    background: #041361;
     border: 0px;
     color: #fff;
 }
 .dark:hover{
-    background: #ce5c37;
+    background: #000;
     border: 0px;
     color: #fff;
 }

@@ -78,7 +78,7 @@ export default function Login() {
         if(state?.isLoggedIn){
             window.location.href = `/${state.role_slug}/dashboard`;
         }else{
-            history.push('/admin/login');
+            history.push('/login');
         }
     }
 

@@ -1,5 +1,6 @@
 import AdminLogin from '../pages/admin/auth/Login'
 import Dashboard from '../pages/admin/Dashboard';
+import AppSettings from '../pages/admin/AppSettings';
 
 export const webRoutes =  [
       { 
@@ -7,7 +8,7 @@ export const webRoutes =  [
             component: AdminLogin
       },
       { 
-            path:'/admin/login',
+            path:'/:user_type?/login',
             component: AdminLogin
       }
 ];
@@ -18,7 +19,8 @@ export const privateRoutes = [
           component: Dashboard
       },
       {
-          path: '/admin',
-          component: Dashboard
-      }
+          path: '/:user_type?/app-settings/:page_type?',
+          component: AppSettings,
+          title: 'App Settings'
+      },
 ]
