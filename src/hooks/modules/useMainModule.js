@@ -1,4 +1,3 @@
-import {useParams} from 'react-router-dom'
 import {useContext}  from 'react'
 import {useQuery} from 'react-query';
 import axios from 'axios';
@@ -6,7 +5,6 @@ import {AuthContext} from '../../context/AuthContext';
 import API_URL from '../../helper/APIHelper'
 
 export default function useMainModule(role,email) {
-    const params = useParams();
     const {state } = useContext(AuthContext);
     
     return useQuery(`role-modules-${role}-${email}`, async () => {

@@ -13,11 +13,15 @@ h1, h4 {
     color: #fff;
 }
 .logo{
-    padding:15vh;
+    padding:5vh;
     text-align: center;
     color: #fff;
-    font-size: 3.5rem;
+    margin: 0vh 0vh 6vh 0vh;
 }
+.logo > img{
+    width: 180px;
+}
+
 .image-div{
     margin:90px 0;
 }
@@ -25,20 +29,22 @@ h1, h4 {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #030c35;
+    background-color: #2d3d71;
     color: #fff;
     margin:0;
     font-size: 1rem !important;
     height: 100vh;
     width: 380px;
-    padding: 20vh 35px;
+    padding: 0vh 35px;
 }
 .adminLoginDiv form label{
       text-align: left !important;
       margin-bottom: 10px;
+      color: #fff;
 }
 .form-control{
     padding: 0px 10px;
-    height: 35px;
-    line-height: 35px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 1.2rem;
 }

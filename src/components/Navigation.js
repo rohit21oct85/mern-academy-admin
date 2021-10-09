@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link, useHistory ,NavLink, useLocation, useParams } from "react-router-dom";
+import React, { useContext, useState } from 'react'
+import { Link, useHistory ,NavLink } from "react-router-dom";
 import './Nav.css';
 import { Nav} from 'react-bootstrap'
 import {AuthContext} from 'context/AuthContext';
@@ -13,9 +13,7 @@ import useMainModules from '../hooks/modules/useMainModule';
 
 export default function Navigation() {
     const history = useHistory();
-    const location = useLocation();
-    const params = useParams();
-
+    
     const { state, dispatch } = useContext(AuthContext);
 
     const {data:routes} = useMainModules(state.role_slug,state.email);
@@ -48,12 +46,12 @@ return (
 {state.isLoggedIn && (
 <div className="login_menu col-lg-2 col-md-2 col-12" bg="dark" variant="dark" expand="lg">
     <div className="webLogo row">
-        <img src="/logo.png" className="mr-2" style={{ width: '65%'}} alt="User"/>
+        <img src="/logo.jpg" className="mr-2 text-center" style={{ width: '190px'}} alt="User"/>
     </div>
     <div className="user_area row">
         <div className="col-md-12 user_icon">
             <div className="col-md-12 p-0">
-                <img src={`/profile.jpg`} className="profileImage"/>
+                <img src={`/profile.jpg`} className="profileImage" alt="mern-academy-logo"/>
 
             </div>
         </div>
@@ -67,13 +65,14 @@ return (
             </div>
             <ul className="pl-0 pr-0">
                 <li as={Link}>
-                    <button className="bg-success dark br-10 pl-2 pr-2">
-                        <span className="fa fa-lock mr-2"></span> {state?.role_slug?.replace('-'," ")}
+                    <button className="bg-success dark br-10 pl-3 pr-3">
+                        <span className="fa fa-lock"></span> 
+                        &nbsp; {state?.role_slug?.replace('-'," ")}
                     </button>
                 </li>
                 <li as={Link} onClick={logout} alt="Logout">
                     <button className="bg-danger dark br-10 ">
-                        <span className="fa fa-power-off mr-2"></span>&nbsp; 
+                        <span className="fa fa-power-off"></span>&nbsp; 
                         Logout
                     </button>
                 </li>
@@ -87,7 +86,7 @@ return (
                     <NavLink to={`/${state?.role_slug}/dashboard`}> <span className={`bi bi-speedometer text-warning`}></span> Dashboard </NavLink>
                 </Nav>
             </li>
-            {state?.role == '1' && (
+            {state?.role_slug === 'super-admin' && (
             <>
             <li>
                 <Nav className="ml-auto">
@@ -115,7 +114,9 @@ return (
 
         </ul>
     </div>
-            
+    <div className="nav-footer">
+        &copy; Mern Academy - V0.0.1
+    </div>        
             
 </div>
 )}

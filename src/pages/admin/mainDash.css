@@ -13,16 +13,16 @@
 }
 .dashboard_main-container {
     padding: 0px 10px 20px 10px;
-    background-color: #fdfdfd;
-    height: fit-content;
+    background-color: #f3f3f3;
+    height: 100vh;
 }
 .dashboard_main-container-inner {
     padding: 0px 10px 20px 10px;
-    background-color: #fdfdfd;
 }
 .dash-main-head {
     margin-bottom: 10px;
     position: relative;
+    background: #ffff;
 }
 .setting{
     position: absolute;
@@ -53,7 +53,7 @@ h2{
 .dash-cont-start{
     background-color: #fff;
     padding: 0px;
-    height: 70vh;
+    height: 78vh;
     margin-bottom: 1em;
     overflow-x: hidden;
 }
@@ -370,12 +370,12 @@ label.form-lable.form-input{
     border-radius: 0px !important;
 }
 .dark{
-    background: #041361;
+    background: #273564;
     border: 0px;
     color: #fff;
 }
 .dark:hover{
-    background: #000;
+    background: #040c27;
     border: 0px;
     color: #fff;
 }
@@ -384,11 +384,7 @@ label.form-lable.form-input{
     border: 0px;
     color: #fff;
 }
-.dark:hover{
-    background: rgb(95, 2, 2);
-    border: 0px;
-    color: #fff;
-}
+
 
 .btn-full{
     width: 100%

@@ -1,15 +1,14 @@
-import React, { useContext, useState } from 'react'
-import {useLocation, useParams, useHistory} from 'react-router-dom'
+import { useContext } from 'react'
+import { useParams, useHistory} from 'react-router-dom'
 import {useMutation, useQueryClient} from 'react-query'
 import axios from 'axios'
 import API_URL from 'helper/APIHelper';
 import { useToasts } from 'react-toast-notifications';
 import {AuthContext} from 'context/AuthContext';
 
-export default function useUpdateRole(formData) {
+export default function useUpdateAdmin() {
       const params = useParams();
-      const location = useLocation();
-      const path = location.pathname;
+      
       const history = useHistory();
       const queryClient = useQueryClient()
       const {state} = useContext(AuthContext);
@@ -22,12 +21,12 @@ export default function useUpdateRole(formData) {
       const { addToast } = useToasts();
       const status =  useMutation((formData) => {
             const id = params?.role_id
-            return axios.patch(`${API_URL}v1/role/update/${id}`, formData, options)
+            return axios.patch(`${API_URL}/admin/update/${id}`, formData, options)
         },{
         onSuccess: () => {
-            queryClient.invalidateQueries('roles')
+            queryClient.invalidateQueries('admins')
             addToast('Category Updated successfully', { appearance: 'success',autoDismiss: true });
-            history.push('/admin/app-roles');
+            history.push(`/${state?.role_slug}/app-settings/app-admins`);
         }
         });
       return status;

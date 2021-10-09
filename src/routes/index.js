@@ -19,7 +19,7 @@ export const privateRoutes = [
           component: Dashboard
       },
       {
-          path: '/:user_type?/app-settings/:page_type?',
+          path: '/:user_type?/app-settings/:page_type?/:role_id?',
           component: AppSettings,
           title: 'App Settings'
       },

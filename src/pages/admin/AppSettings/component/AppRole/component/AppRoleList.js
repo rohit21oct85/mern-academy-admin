@@ -1,14 +1,14 @@
 import React from 'react'
 import Loading from 'components/Loading';
-import useAppRole from '../hooks/useAppRoles';
+import useAppRole from '../hooks/query/useAppRoles';
 import SingleRole from './SingleRole';
 
 export default function AppRoleList() {
     const {data, isLoading} = useAppRole();
     return (
         <>
-            <p className="form-heading">
-            <span className="fa fa-plus-circle mr-2"></span>&nbsp; App Roles</p>
+            <h5 className="form-heading">
+            <span className="bi bi-list"></span>&nbsp; App Roles</h5>
             <hr className="mt-1"/>
             {isLoading && (<Loading isLoading={isLoading}/>)}
             <div className="col-md-12 row no-gutter">

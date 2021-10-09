@@ -16,14 +16,17 @@ export default function AppSettings() {
     const params = useParams();
     const location = useLocation();
     const path = location?.pathname;
-    const { state, dispatch } = useContext(AuthContext);
-    useEffect(checkURL, [state]);
+    const { state } = useContext(AuthContext);
+    useEffect(() => {
+        async function checkURL(){
+            if(path === '/super-admin/'){
+                history.push(`/super-admin/dashboard`);
+            }    
+        }
+        checkURL()
+    }, [state, history, path]);
 
-    async function checkURL(){
-        if(path === '/super-admin/'){
-            history.push(`/super-admin/dashboard`);
-        }    
-    }
+    
 
 return (
 

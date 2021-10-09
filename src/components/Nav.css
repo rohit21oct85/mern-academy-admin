@@ -28,7 +28,7 @@
 /* loged in css */
 
 .login_menu{
-    background-color: #041361;
+    background-color: #273564;
     height: 100vh;
     overflow: hidden;
     padding: 0px;
@@ -41,7 +41,7 @@
     padding: 11px 10px;
 }
 .user_area {
-    background: #041361;
+    
     text-align: center;
     color: #fff;
     padding: 15px;
@@ -73,9 +73,9 @@
 .navbar_menus {
     margin-top: 10px;
     color: #fff;
-    height: 60vh;
+    height: 61vh;
     overflow-y: auto;
-    background: #041361;
+    background: #2d3d71;
 }
 .navbar_menus ul {
     list-style-type: none;
@@ -115,4 +115,12 @@
 .navbar_menus ul li:hover a{
     color: #2f3348;
     font-weight:600;
+}
+.nav-footer{
+    color: #fff;
+    height: 10px;
+    line-height: 10px;
+    padding: 5px 0px;
+    margin-top: 10px;
+    text-align: center;
 }

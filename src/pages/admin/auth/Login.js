@@ -1,5 +1,5 @@
 import React , {useState, useEffect,useRef, useContext} from 'react';
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import {AuthContext} from '../../../context/AuthContext';
 import './Login.css';
@@ -73,33 +73,36 @@ export default function Login() {
         }   
     }
     
-    useEffect(checkLoggedInUser,[state]);
-    async function checkLoggedInUser(){
-        if(state?.isLoggedIn){
-            window.location.href = `/${state.role_slug}/dashboard`;
-        }else{
-            history.push('/login');
+    useEffect(() => {
+        async function checkLoggedInUser(){
+            if(state?.isLoggedIn){
+                window.location.href = `/${state.role_slug}/dashboard`;
+            }else{
+                history.push('/login');
+            }
         }
-    }
+        checkLoggedInUser()
+    },[state, history]);
+    
 
     return (
         <div className="container-fluid p-0 m-0 text-left LoginBg" style={{
             background: `url('/bg.jpg')`
         }}>
             <div className="row no-gutter">
-                  <div className="logo">
-                        <h1>MERN Academy</h1>
-                  </div>  
                 <div className="col-md-3 adminLoginDiv">
+                    <div className="logo">
+                        <img src={`/logo.jpg`} alt="mern academy logo"/>
+                    </div> 
                     
-                    <h4>Administrator Login </h4>    
+                    <h4 className="text-center pb-3">Administrator Login </h4>    
                     <hr />
                 
                 <form autoComplete="Off" onSubmit={submitForm}>
                     <div className="form-group text-left">
                         <label> <span className="fa fa-send mr-2"></span> Email address</label>
                         <input className="form-control" type="email" autoComplete="off" ref={emailRef} placeholder="Enter email" />
-                        <p className="text-muted mt-2">
+                        <p className="text-white mt-2">
                             We'll never share your email with anyone else.
                         </p>
                     </div>
@@ -107,24 +110,24 @@ export default function Login() {
                     <div className="form-group text-left">
                         <label> <span className="fa fa-lock mr-2"></span> Password</label>
                         <input className="form-control" type="password" autoComplete="Off" ref={passwordRef} placeholder="Password" />
-                        <p className="text-muted mt-2">
+                        <p className="text-white mt-2">
                             We'll never share your password with anyone else
 
                         </p>
                     </div>
                     <hr />
                     <button 
-                        className="btn btn-md btn-block btn-success dark w-100" 
+                        className="btn btn-md btn-block p-3 dark w-100" 
                         type="submit"
                         disabled={loading}
                     >
                         {loading ? (
                             <>
-                            <span className="fa fa-spinner mr-2"> </span> Authenticating...
+                            <span className="fa fa-spinner mr-2"> </span> &nbsp; Authenticating...
                             </>
                         ):(
                             <>
-                            <span className="fa fa-lock mr-2"> </span> Login Your Account
+                            <span className="fa fa-lock mr-2"> </span> &nbsp; Login Your Account
                             </>
                         )}
                     </button>

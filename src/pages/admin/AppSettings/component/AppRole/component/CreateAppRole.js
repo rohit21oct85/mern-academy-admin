@@ -1,32 +1,29 @@
-import React, {useState, useContext, useEffect} from 'react'
-import {useHistory, useParams, useLocation} from 'react-router-dom'
-import {AuthContext} from 'context/AuthContext';
+import React, {useState, useEffect, useContext} from 'react'
+import {useHistory, useParams} from 'react-router-dom'
 
 import * as utils from 'utils/utils';
 
-import useSingleRole from '../hooks/useSingleRole';
-import useCreateRole from '../hooks/useCreateRole';
-import useUpdateRole from '../hooks/useUpdateRole';
-import useAppRoles from '../hooks/useAppRoles'
-import useDeleteRole from '../hooks/useDeleteRole';
+import useSingleRole from '../hooks/query/useSingleRole';
+import useCreateRole from '../hooks/mutation/useCreateRole';
+import useUpdateRole from '../hooks/mutation/useUpdateRole';
+import useAppRoles from '../hooks/query/useAppRoles'
+import useDeleteRole from '../hooks/mutation/useDeleteRole';
+import { AuthContext } from 'context/AuthContext';
 
 export default function CreateAppRole() {
     const history = useHistory();
     const params  = useParams();
-    const location = useLocation();
-    
     const {state} = useContext(AuthContext);
-
     const [RoleName, setRoleName] = useState("");
-    const [loading, setLoading] = useState(false);
     const {data} = useSingleRole();
-    console.log(data);
+    
     const {data:roles} = useAppRoles();
     const [singleRole, setSingleRole] = useState();
+    const [RoleId, setRoleId] = useState();
     useEffect(()=> {
         setRoleId(roles && roles?.length+1);
     },[roles])
-    const [RoleId, setRoleId] = useState();
+    
     
     async function increment(e){
         e.preventDefault();
@@ -75,9 +72,9 @@ export default function CreateAppRole() {
 
     const saveAppRole = async (e) => {
         e.preventDefault();
-        setLoading(true);
         
-        if(singleRole?.role_name !== RoleName && params?.role_id){
+        
+        if(params?.role_id){
             formData['role_name'] = singleRole?.role_name;
             formData['role_slug'] = utils.MakeScore(singleRole?.role_name);
         }else{
@@ -85,13 +82,12 @@ export default function CreateAppRole() {
             formData['role_slug'] = utils.MakeScore(RoleName);
         }
         
-        if(singleRole?.role_id !== RoleId && params?.role_id){
-            formData['role_id'] = RoleId;
-        }else if(singleRole?.role_id === RoleId && params?.role_id){
-            formData['role_id'] = singleRole?.role_id;
-        }else{
-            formData['role_id'] = RoleId;   
+        if(params?.role_id){
+            formData['role_id'] = params?.role_id;
         }
+        
+        formData['role_id'] = RoleId;
+        
         // console.log(formData); return;
         
         if(params?.role_id){
@@ -106,10 +102,11 @@ export default function CreateAppRole() {
         setFormData({...formData, role_id: params?.role_id});
         await deleteMutation.mutate(formData);
     }
+
     return (
         <>
-            <p className="form-heading">
-            <span className="fa fa-plus-circle mr-2"></span>&nbsp; Create App Role</p>
+            <h5 className="form-heading">
+            <span className="bi bi-plus-circle-fill"></span>&nbsp; Create App Role</h5>
             <hr className="mt-1"/>
             <form onSubmit={saveAppRole}>
                 <div className="form-group">
@@ -160,7 +157,7 @@ export default function CreateAppRole() {
                             e.preventDefault();
                             clearFields();
                             setSingleRole({})
-                            history.push(`/admin/app-roles`)
+                            history.push(`/${state?.role_slug}/app-settings/app-roles`)
                         }}>
                             <span className="fa fa-times mr-2"></span>
                             Cancel

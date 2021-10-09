@@ -11,7 +11,7 @@ export default function useSingleRole() {
     const {state } = useContext(AuthContext);
     return useQuery(`single-role-${role_id}`, async () => {
         if(role_id !== undefined){
-            const result = await axios.get(`${API_URL}v1/role/view/${role_id}`,{
+            const result = await axios.get(`${API_URL}/role/view/${role_id}`,{
                 headers: {
                     'Content-Type': 'Application/json',
                     'Authorization':'Bearer '+state.access_token

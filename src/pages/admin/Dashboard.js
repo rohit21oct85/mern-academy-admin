@@ -1,22 +1,12 @@
-import React,{useContext, useEffect} from 'react'
-import {useLocation, useHistory} from 'react-router-dom'
+import React,{useContext} from 'react'
 import './mainDash.css';
 
 import {AuthContext} from '../../context/AuthContext';
 
 export default function Dashboard() {
-    const history = useHistory();
-    const location = useLocation();
-    const path = location?.pathname;
-    const { state, dispatch } = useContext(AuthContext);
-    useEffect(checkURL, [state]);
 
-    async function checkURL(){
-        if(path === '/super-admin/'){
-            history.push(`/super-admin/dashboard`);
-        }    
-    }
-
+const { state } = useContext(AuthContext);
+    
 return (
 
 <>

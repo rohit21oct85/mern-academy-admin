@@ -1,18 +1,15 @@
-import React, { useContext, useState } from 'react'
-import {useLocation, useParams, useHistory} from 'react-router-dom'
+import { useContext } from 'react'
+import {useHistory} from 'react-router-dom'
 import {useMutation, useQueryClient} from 'react-query'
 import axios from 'axios'
 import API_URL from 'helper/APIHelper';
 import { useToasts } from 'react-toast-notifications';
 import {AuthContext} from 'context/AuthContext';
 
-export default function useCreateRole(formData) {
+export default function useCreateRole() {
       
       const queryClient = useQueryClient()
       const {state} = useContext(AuthContext);
-      const params = useParams();
-      const location = useLocation();
-      const path = location.pathname;
       const history = useHistory();
       
       const options = {
@@ -23,12 +20,12 @@ export default function useCreateRole(formData) {
       }      
       const { addToast } = useToasts();
       return useMutation(formData => {
-            return axios.post(`${API_URL}v1/role/create`, formData, options)
+            return axios.post(`${API_URL}/role/create`, formData, options)
         },{
         onSuccess: () => {
             queryClient.invalidateQueries('roles')
             addToast('Roles added successfully', { appearance: 'success',autoDismiss: true });
-            history.push('/admin/app-roles');
+            history.push(`/${state?.role_slug}/app-settings/app-roles`);
         }
       });
       
